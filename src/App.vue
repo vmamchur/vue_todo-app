@@ -1,47 +1,141 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="todoapp">
+    <h1 class="todoapp__title">todos</h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div class="todoapp__content">
+      <header class="todoapp__header">
+        <button class="todoapp__toggle-all active"></button>
+
+        <form>
+          <input
+            type="text"
+            class="todoapp__new-todo"
+            placeholder="What needs to be done?"
+          />
+        </form>
+      </header>
+
+      <section class="todoapp__main">
+        <div class="todo completed">
+          <label class="todo__status-label">
+            <input
+              type="checkbox"
+              class="todo__status"
+              checked
+            />
+          </label>
+
+          <span class="todo__title">Completed Todo</span>
+
+          <button class="todo__remove">x</button>
+
+          <div class="modal overlay">
+            <div class="modal-background has-background-white-ter"></div>
+            <div class="loader"></div>
+          </div>
+        </div>
+
+        <div class="todo">
+          <label class="todo__status-label">
+            <input
+              type="checkbox"
+              class="todo__status"
+            />
+          </label>
+
+          <span class="todo__title">Not Completed Todo</span>
+          <button class="todo__remove">x</button>
+
+          <div class="modal overlay">
+            <div class="modal-background has-background-white-ter"></div>
+            <div class="loader"></div>
+          </div>
+        </div>
+
+        <div class="todo">
+          <label class="todo__status-label">
+            <input
+              type="checkbox"
+              class="todo__status"
+            />
+          </label>
+
+          <form>
+            <input
+              type="text"
+              class="todo__title-field"
+              placeholder="Empty todo will be deleted"
+              value="Todo is being edited now"
+            />
+          </form>
+
+          <div class="modal overlay">
+            <div class="modal-background has-background-white-ter"></div>
+            <div class="loader"></div>
+          </div>
+        </div>
+
+        <div class="todo">
+          <label class="todo__status-label">
+            <input
+              type="checkbox"
+              class="todo__status"
+            />
+          </label>
+
+          <span class="todo__title">Todo is being saved now</span>
+          <button class="todo__remove">x</button>
+
+          <div class="modal overlay is-active">
+            <div class="modal-background has-background-white-ter"></div>
+            <div class="loader"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="todoapp__footer">
+        <span class="todo-count">
+          3 items left
+        </span>
+
+        <nav class="filter">
+          <a
+            href="#/"
+            class="filter__link selected"
+          >
+            All
+          </a>
+
+          <a
+            href="#/active"
+            class="filter__link"
+          >
+            Active
+          </a>
+
+          <a
+            href="#/completed"
+            class="filter__link"
+          >
+            Completed
+          </a>
+        </nav>
+
+        <button class="todoapp__clear-completed">
+          Clear completed
+        </button>
+      </footer>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <article class="message is-danger message--hidden">
+      <div class="message-header">
+        <p>Error</p>
+        <button class="delete"></button>
+      </div>
+
+      <div class="message-body">
+        Unable to add a Todo
+      </div>
+    </article>
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
